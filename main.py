@@ -27,16 +27,18 @@ print(Back.GREEN + "made by dimlight. on discord :>")
 print()
 print(Fore.LIGHTGREEN_EX + "---------------------------------")
 bot = 270904126974590976
-
 class MyClient(discord.Client):
 
   async def on_ready(self):
     print(Fore.LIGHTGREEN_EX + "---------------------------------")
     print(f'Logged on as {self.user}!')
     print(Fore.LIGHTGREEN_EX + "---------------------------------")
-    dm = self.get_user(bot)
-    print(dm)
     global dm
+    dm = self.get_user(bot)
+    #print(dm)
+    #global dm
+    global joined
+    joined = 0
   async def on_message(self, message):
     if message.channel.id not in channels:
       return
@@ -48,15 +50,16 @@ class MyClient(discord.Client):
           if embed.title is not None and "is starting a bank robbery" in embed.title.lower():
             print(Fore.GREEN + 'heist')
             async for cmd in dm.slash_commands(query="deposit"):
-              print(cmd)
+              #print(cmd)
               await asyncio.sleep(1,3)
               await cmd(amount="max")
             async for cmd in dm.slash_commands(query="withdraw"):
-              print(cmd)
+              #print(cmd)
               await asyncio.sleep(1,3)
               await cmd(amount="2k")
             await message.components[0].children[0].click()
-            print(Fore.GREEN + 'done')
+            #joined+=1
+            print(Fore.GREEN + 'joined heist') #{joined} times')
             continue
       #elif "hi" in message.content.lower():
         #print(Fore.GREEN + f"hello {message.author}")
@@ -72,15 +75,12 @@ async def run_bot(token):
 
 
 if __name__ == '__main__':
-  channels = [channel1, channel2]  # Replace with your desired channel IDs, this is the channels where the bot will join heists at.
+  channels = [channel1, channel2]  # Replace with your desired channel IDs, DO NOT PUT "" OR '' 
 
   tokens = [
-    "token1",
-    "token2",
-    "token3"
-    #, os.environ['token2']
+    'token1','token2','token3'
   ]  # Add more tokens as needed, use os.environ['token1'] to hide tokens if using replit or other public hosting services
-
+#make sure to use commas
   processes = []
 
   for token in tokens:
