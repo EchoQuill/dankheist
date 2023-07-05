@@ -30,70 +30,72 @@ bot = 270904126974590976
 
 class MyClient(discord.Client):
 
-  async def on_ready(self):
-    print(Fore.LIGHTGREEN_EX + "---------------------------------")
-    print(f'Logged on as {self.user}!')
-    print(Fore.LIGHTGREEN_EX + "---------------------------------")
-    global dm
-    dm = self.get_user(bot)
-    #print(dm)
-    #global dm
-    global joined
-    joined = 0
+    async def on_ready(self):
+        print(Fore.LIGHTGREEN_EX + "---------------------------------")
+        print(f'Logged on as {self.user}!')
+        print(Fore.LIGHTGREEN_EX + "---------------------------------")
+        global dm
+        dm = self.get_user(bot)
+        # print(dm)
+        # global dm
+        global joined
+        joined = 0
 
-  async def on_message(self, message):
-    if message.channel.id not in channels:
-      return
-    #if message.author.id != 270904126974590976:
-      #return
-    try:
-      if message.embeds:
-        for embed in message.embeds:
-          if embed.title is not None and "is starting a bank robbery" in embed.title.lower(
-          ):
-            print(Fore.GREEN + 'heist')
-            async for cmd in dm.slash_commands(query="deposit"):
-              #print(cmd)
-              await asyncio.sleep(1, 3)
-              await cmd(amount="max")
-            async for cmd in dm.slash_commands(query="withdraw"):
-              #print(cmd)
-              await asyncio.sleep(1, 3)
-              await cmd(amount="2k")
-            await message.components[0].children[0].click()
-            #joined+=1
-            print(Fore.GREEN + f'joined heist:- {self.user}')  #{joined} times')
-            continue
-      #elif "hi" in message.content.lower():
-        #print(Fore.GREEN + f"hello {message.author} {self.user}")
-    except Exception as e:
-      print(Fore.LIGHTRED_EX + "---------------------------------")
-      print(f"An error occurred: {e}")
-      print(Fore.LIGHTRED_EX + "---------------------------------")
+    async def on_message(self, message):
+        if message.channel.id not in channels:
+            return
+        #if message.author.id != 270904126974590976:
+          #  return
+        try:
+            if message.embeds:
+                for embed in message.embeds:
+                    if embed.title is not None and "is starting a bank robbery" in embed.title.lower():
+                        print(Fore.GREEN + 'heist')
+                        async for cmd in dm.slash_commands(query="deposit"):
+                            # print(cmd)
+                            await asyncio.sleep(1, 3)
+                            await cmd(amount="max")
+                        async for cmd in dm.slash_commands(query="withdraw"):
+                            # print(cmd)
+                            await asyncio.sleep(1, 3)
+                            await cmd(amount="2k")
+                        await message.components[0].children[0].click()
+                        # joined+=1
+                        print(Fore.GREEN + f'joined heist:- {self.user}')  # {joined} times')
+                        continue
+            elif "hi" in message.content.lower():
+                print(Fore.GREEN + f"hello {message.author} {self.user}")
+        except Exception as e:
+            print(Fore.LIGHTRED_EX + "---------------------------------")
+            print(f"An error occurred: {e}")
+            print(Fore.LIGHTRED_EX + "---------------------------------")
 
 
 def run_bot(token):
-  client = MyClient()
-  client.run(token)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    client = MyClient()
+    client.loop = loop
+    client.run(token)
 
 
 if __name__ == '__main__':
-  channels = [
-    chanel1,channel2
-  ]  # Replace with your desired channel IDs
+    channels = [
+        channel-1,channel-2
+    ]  # Replace with your desired channel IDs
 
-  tokens = [
-   "tok1","toke2"
-  ]  # Add more tokens as needed, use os.environ['token1'] to hide tokens if using replit or other public hosting services
+    tokens = [
+       "token1","token2"
+    ]  # Add more tokens as needed, use os.environ['token1'] to hide tokens if using replit or other public hosting services
 
-  threads = []
+    threads = []
 
-  for token in tokens:
-    thread = threading.Thread(target=run_bot, args=(token, ))
-    threads.append(thread)
+    for token in tokens:
+        thread = threading.Thread(target=run_bot, args=(token,))
+        threads.append(thread)
 
-  for thread in threads:
-    thread.start()
+    for thread in threads:
+        thread.start()
 
-  for thread in threads:
-    thread.join()
+    for thread in threads:
+        thread.join()
