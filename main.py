@@ -42,10 +42,10 @@ class MyClient(discord.Client):
         joined = 0
 
     async def on_message(self, message):
-        if message.channel.id not in channels:
+        #if message.channel.id not in channels:
+            #return
+        if message.author.id != 270904126974590976:
             return
-        #if message.author.id != 270904126974590976:
-          #  return
         try:
             if message.embeds:
                 for embed in message.embeds:
@@ -65,6 +65,8 @@ class MyClient(discord.Client):
                         continue
             elif "hi" in message.content.lower():
                 print(Fore.GREEN + f"hello {message.author} {self.user}")
+        except asyncio.TimeoutError:
+            print("Task took too long and timed out.")
         except Exception as e:
             print(Fore.LIGHTRED_EX + "---------------------------------")
             print(f"An error occurred: {e}")
@@ -80,14 +82,13 @@ def run_bot(token):
 
 
 if __name__ == '__main__':
-    channels = [
-        channel-1,channel-2
-    ]  # Replace with your desired channel IDs
+    #channels = [
+       # channel-1,channel-2
+    #]  # Replace with your desired channel IDs
 
     tokens = [
-       "token1","token2"
-    ]  # Add more tokens as needed, use os.environ['token1'] to hide tokens if using replit or other public hosting services
-
+        "token1", "token2"
+    ]
     threads = []
 
     for token in tokens:
