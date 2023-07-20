@@ -42,10 +42,8 @@ class MyClient(discord.Client):
         joined = 0
 
     async def on_message(self, message):
-        if message.channel.id not in channels:
+        if message.author.id != 270904126974590976:
             return
-        #if message.author.id != 270904126974590976:
-          #  return
         try:
             if message.embeds:
                 for embed in message.embeds:
@@ -79,10 +77,6 @@ def run_bot(token):
     client.run(token)
 
 
-if __name__ == '__main__':
-    channels = [
-        channel-1,channel-2
-    ]  # Replace with your desired channel IDs
 
     tokens = [
        "token1","token2"
