@@ -6,6 +6,7 @@ import asyncio
 import threading
 import colorama
 from colorama import Fore, Back, Style
+import random
 
 colorama.init(autoreset=True)
 
@@ -53,11 +54,11 @@ class MyClient(discord.Client):
                         print(Fore.GREEN + 'heist')
                         async for cmd in dm.slash_commands(query="deposit"):
                             # print(cmd)
-                            await asyncio.sleep(1, 3)
+                            asyncio.sleep(random.randint(1,3))
                             await cmd(amount="max")
                         async for cmd in dm.slash_commands(query="withdraw"):
                             # print(cmd)
-                            await asyncio.sleep(1, 3)
+                            asyncio.sleep(random.randint(1,3))
                             await cmd(amount="2k")
                         await message.components[0].children[0].click()
                         # joined+=1
