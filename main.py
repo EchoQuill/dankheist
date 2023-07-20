@@ -35,12 +35,8 @@ class MyClient(discord.Client):
         print(Fore.LIGHTGREEN_EX + "---------------------------------")
         print(f'Logged on as {self.user}!')
         print(Fore.LIGHTGREEN_EX + "---------------------------------")
-        global dm
-        dm = self.get_user(bot)
-        # print(dm)
-        # global dm
-        global joined
-        joined = 0
+        self.dm = self.user
+        self.joined = 0
 
     async def on_message(self, message):
         #if message.channel.id not in channels:
