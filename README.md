@@ -3,6 +3,23 @@
 
 heist joiner for dankmemer
 
+
+
+
+
+# WARNING, THE INSTALLATION HERE IS OURTADED AND NOT COMPLETE, PLS JOIN THE DISCORD SERVER TO SET IT UP AS OF RN:-
+
+https://discord.gg/3uncuaQbBY
+
+# after i find a ver where the is no bug, ill upaded readme accordingly, thankyou
+
+
+
+
+
+
+
+
 ## installation:-
 1) ```git clone https://github.com/1010saf/dankheist.git```
 2) ```cd dankheist```
