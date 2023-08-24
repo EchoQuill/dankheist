@@ -285,11 +285,8 @@ if __name__ == "__main__":
 ''')
     webhook = SyncWebhook.from_url(webhook_url)
     embed = discord.Embed(
-    title='time to rob banks started',
-    description=f'''current ver "{ver}".
-made by dimlight. on discord,
-
-make sure to join https://discord.gg/j6V5JnvCR for fast update notification''',
+    title='dankheist started',
+    description=f'current ver "{ver}".',
     color=discord.Color.purple()
     )
     embed2 = discord.Embed(
