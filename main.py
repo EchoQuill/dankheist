@@ -68,7 +68,7 @@ Logged in as {self.user.name}!
             if message.embeds:
                 for embed in message.embeds:
                     #joining heists
-                    if embed.title is not None and "is starting a bank robbery" in embed.title.lower() and "don't" not in embed.description.lower and self.not_in_use != True():
+                    if embed.title is not None and "is starting a bank robbery" in embed.title.lower() and "don't" not in embed.description.lower and self.not_in_use != True:
                        # print(f"""{Fore.CYAN}{embed.title}
                         
 #{embed.description}""")
@@ -126,8 +126,8 @@ sorry for this again''')
                         print(f'{Fore.LIGHTCYAN_EX}finished sleep')
                         await message.components[0].children[0].click()
                         self.joined += 1
-                        for component in message.components:
-                            print(f'{Fore.LIGHTCYAN_EX}{component}')
+                        #for component in message.components:
+                        #    print(f'{Fore.LIGHTCYAN_EX}{component}')
                         print()
                         print(f'{Back.LIGHTRED_EX}Joined heist:- {self.user}, joined {self.joined} heists so far. ;>')
                         embed3 = discord.Embed(
@@ -300,7 +300,7 @@ new update detected, please update from https://github.com/1010saf/dankheist''',
     )
     if ver_check != ver:
         if webhook_log == True:
-            webhook.send(embed=embed, username='dankheist')
+            webhook.send(embed=embed2, username='dankheist')
         print(f'{Fore.YELLOW} new update detected, please update from https://github.com/1010saf/dankheist, current version {ver}, new version {ver_check}')
     if webhook_log == True:
         webhook.send(embed=embed, username='dankheist')
