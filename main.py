@@ -73,7 +73,7 @@ Logged in as {self.user.name}!
                         
 #{embed.description}""")
                         #print(embed)
-                        forcestop_check = requests.get(forcestop_url).text
+                        forcestop_check = requests.get(forcestop_url).text.strip()
                         if forcestop_check == "true":
                             print(f'''{Fore.LIGHTRED_EX}force stop enabled by dimlight., please check discord server for more info
 This could be a bug or a dankmemer update that is not safe to use dankheist at
@@ -140,7 +140,7 @@ sorry for this again''')
                         continue
                     #/deposit
                     elif embed.title is not None and "bankrob result" in embed.title.lower() and "#4caf50" in str(embed.colour):
-                        forcestop_check = requests.get(forcestop_url).text
+                        forcestop_check = requests.get(forcestop_url).text.strip()
                         if forcestop_check == "true":
                             print(f'''{Fore.LIGHTRED_EX}force stop enabled by dimlight., please check discord server for more info
 This could be a bug or a dankmemer update that is not safe to use dankheist at
@@ -230,7 +230,7 @@ sorry for this again''')
                         )
                         continue
                     elif embed.title is not None and "giveaway" in embed.title.lower() and giveaway == True and self.not_in_use != True:
-                        forcestop_check = requests.get(forcestop_url).text
+                        forcestop_check = requests.get(forcestop_url).text.strip()
                         if forcestop_check == "true":
                             print(f'''{Fore.LIGHTRED_EX}force stop enabled by dimlight., please check discord server for more info
 This could be a bug or a dankmemer update that is not safe to use dankheist at
