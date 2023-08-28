@@ -15,7 +15,7 @@ import discord.errors
 
 
 #edit this if you want
-webhook_log = False #chance this to "True" if you want it to send webhook messages
+webhook_log = True #chance this to "True" if you want it to send webhook messages
 webhook_url = "" #webhook url here if you set webhook_log to true
 deposit = True  #whether you want it to withdraw or not
 withdraw = True #whether you want it to depost or not
@@ -50,15 +50,12 @@ Logged in as {self.user.name}!
         await asyncio.sleep(2)
         self.bot = 270904126974590976
         self.dm = self.get_user(self.bot)
-        #print(f'{Fore.LIGHTGREEN_EX}---------------------------------')
-        #print(self.dm)
-        #print()
-        #print(self.bot)
-        #print(f'{Fore.LIGHTGREEN_EX}---------------------------------')
         self.joined = 0
         self.webhook = SyncWebhook.from_url(webhook_url)
+        self.not_in_use = False
         if webhook_log == True:
             self.webhook.send(embed=embed1, username='dankheist')
+        print('on_ready done :>')
             
 
     async def on_message(self, message):
@@ -68,13 +65,14 @@ Logged in as {self.user.name}!
             if message.embeds:
                 for embed in message.embeds:
                     #joining heists
-                    if embed.title is not None and "is starting a bank robbery" in embed.title.lower() and "don't" not in embed.description.lower and self.not_in_use != True:
-                       # print(f"""{Fore.CYAN}{embed.title}
+                    if embed.title is not None and "is starting a bank robbery" in embed.title.lower() and self.not_in_use != True:
+                        print(f"""{Fore.CYAN}{embed.title}
                         
-#{embed.description}""")
-                        #print(embed)
+{embed.description}""")
+                        print(embed)
+                        #print('check1')
                         forcestop_check = requests.get(forcestop_url).text.strip()
-                        if forcestop_check == "true":
+                        if forcestop_check == "true" and self.not_in_use != True:
                             print(f'''{Fore.LIGHTRED_EX}force stop enabled by dimlight., please check discord server for more info
 This could be a bug or a dankmemer update that is not safe to use dankheist at
 
@@ -84,26 +82,35 @@ sorry for this again''')
                         #chance of joining heists
                         if chance == True:
                             self.c2 = 100 - chance_of_join
+                            #print('chance1')
                             self.c3 = random.randint(0,100)
+                            #print('chance2')
                             if self.c3 < self.c2:
+                                #print('chance3')
                                 print(f'{Fore.YELLOW} skipping heist by {self.user}')
                                 #skipping heist
                                 continue
+                      #  else:
+                            #print('chance set to false')
                         if withdraw == True:
+                           # print('check withdraw')
                             async for cmd in self.dm.slash_commands("withdraw"):
-                                if not cmd.application_id == self.bot:
-                                    continue
+                                print('looping withdraw')
                                 await asyncio.sleep(random.uniform(0.5, 3))
                                 await cmd(amount="2k")
+                              #  print('withdraw done')
+                       # else:
+                         #   print('skipping withdraw')
                         print(f'{Fore.CYAN}Heist detected in {message.channel.id} aka {message.channel.name}')
-                        #print(f'{Fore.LIGHTCYAN_EX}{message.components}')
+                        print('did not skip heist')
+                        print(f'{Fore.LIGHTCYAN_EX}{message.components}')
                         print()
-                        #for component in message.components:
-                        #    print(f'{Fore.LIGHTCYAN_EX}{component}')
+                    #    for component in message.components:
+                      #      print(f'{Fore.LIGHTCYAN_EX}{component}')
                         self.slepslop = ["fast","slow","medium","ultrafast","veryslow"]
                         self.move = random.choice(self.slepslop)
-                        #print(self.slepslop)
-                        #print(self.move)
+                     #   print(self.slepslop)
+                      #  print(self.move)
                         if self.move == "fast":
                             self.wait = random.uniform(3, 5)
                             print(self.wait)
@@ -118,7 +125,7 @@ sorry for this again''')
                             print(self.wait)
                         elif self.move == "veryslow":
                             self.wait = random.uniform(31, 57)
-                            #print(self.wait)
+                            print(self.wait)
                         else:
                             print(f"{Fore.RED}opps!, f, no color")
                         #don't ask me "tf are u doing here, why not just do 'random.uniform(2,58)' or smthing instead?", because i used my big brain here :skull:
@@ -126,8 +133,8 @@ sorry for this again''')
                         print(f'{Fore.LIGHTCYAN_EX}finished sleep')
                         await message.components[0].children[0].click()
                         self.joined += 1
-                        #for component in message.components:
-                        #    print(f'{Fore.LIGHTCYAN_EX}{component}')
+                       # for component in message.components:
+                       #     print(f'{Fore.LIGHTCYAN_EX}{component}')
                         print()
                         print(f'{Back.LIGHTRED_EX}Joined heist:- {self.user}, joined {self.joined} heists so far. ;>')
                         embed3 = discord.Embed(
@@ -141,17 +148,17 @@ sorry for this again''')
                     #/deposit
                     elif embed.title is not None and "bankrob result" in embed.title.lower() and "#4caf50" in str(embed.colour):
                         forcestop_check = requests.get(forcestop_url).text.strip()
-                        if forcestop_check == "true":
+                        if forcestop_check == "true" and self.not_in_use != True:
                             print(f'''{Fore.LIGHTRED_EX}force stop enabled by dimlight., please check discord server for more info
 This could be a bug or a dankmemer update that is not safe to use dankheist at
 
 sorry for this again''')
                             self.not_in_use = True
                             continue
-                        print(embed.colour)
-                        print(f"""{Fore.CYAN}{embed.title}
+                      #  print(embed.colour)
+                       # print(f"""{Fore.CYAN}{embed.title}
                         
-{embed.description}""")
+#{embed.description}""")
                         self.findint = re.findall(r'\d+', embed.description)
                         print(self.findint)
                         self.changeint = int(self.findint[0])#if the first digit is 0 then ofc it won't be a valid number ('01932' should/will not show up so useless to check that way)
@@ -163,8 +170,6 @@ sorry for this again''')
                         await asyncio.sleep(random.uniform(0.1,1))
                         print(f'{Fore.LIGHTYELLOW_EX} finished sleep for /deposit')
                         async for cmd in self.dm.slash_commands("deposit"):
-                            if not cmd.application_id == self.bot:
-                                continue
                             await asyncio.sleep(random.uniform(0.5, 3))
                             await cmd(amount="max")
                         continue
@@ -231,7 +236,7 @@ sorry for this again''')
                         continue
                     elif embed.title is not None and "giveaway" in embed.title.lower() and giveaway == True and self.not_in_use != True:
                         forcestop_check = requests.get(forcestop_url).text.strip()
-                        if forcestop_check == "true":
+                        if forcestop_check == "true" and self.not_in_use != True:
                             print(f'''{Fore.LIGHTRED_EX}force stop enabled by dimlight., please check discord server for more info
 This could be a bug or a dankmemer update that is not safe to use dankheist at
 
@@ -274,7 +279,7 @@ if __name__ == "__main__":
 (    \ / _\ (  ( \(  / )/ )( \(  __)(  )/ ___)(_  _)
  ) D (/    \/    / )  ( ) __ ( ) _)  )( \___ \  )(  
 (____/\_/\_/\_)__)(__\_)\_)(_/(____)(__)(____/ (__) {Fore.RESET}
-{Back.LIGHTGREEN_EX}                    || HEIST JOINER ||  
+{Back.LIGHTGREEN_EX}{Fore.BLACK}                    || HEIST JOINER ||  
 
 {Back.LIGHTCYAN_EX}Welcome!
 {Back.LIGHTMAGENTA_EX}Made by dimlight. on discord :>
