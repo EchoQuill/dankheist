@@ -55,7 +55,7 @@ Logged in as {self.user.name}!
         self.not_in_use = False
         if webhook_log == True:
             self.webhook.send(embed=embed1, username='dankheist')
-        print('on_ready done :>')
+       # print('on_ready done :>')
             
 
     async def on_message(self, message):
