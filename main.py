@@ -27,7 +27,7 @@ stop_if_maintainance = True
 
 #DON'T TOUCH THESE
 bot_busy = False
-ver = "0.1"
+ver = "1"
 ver_check_url = "https://raw.githubusercontent.com/1010saf/dankheist/main/version.txt"
 ver_check = requests.get(ver_check_url).text.strip()
 forcestop_url = "https://raw.githubusercontent.com/1010saf/dankheist/main/forcestop.txt"
