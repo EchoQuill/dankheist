@@ -15,9 +15,9 @@ import discord.errors
 
 
 #edit this if you want
-webhook_log = True #chance this to "True" if you want it to send webhook messages
+webhook_log = False #chance this to "True" if you want it to send webhook messages
 webhook_url = "" #webhook url here if you set webhook_log to true
-deposit = True  #whether you want it to withdraw or not
+deposit = False  #whether you want it to withdraw or not
 withdraw = True #whether you want it to depost or not
 chance_of_join = 100 #don't change if you want it to join all heists, else change it to how much percent you want it to join heists(percent without "%" symbol, only numbers)
 notifications = True #chance this to "False" if you want it to not send messages regarding selfbot status
@@ -199,7 +199,7 @@ sorry for this again''')
                         self.not_in_use = True
                         embed4 = discord.Embed(
                     title=f'user banned :- {self.user} ;<, well just make more accounts',
-                    description=f"we are sad to tell that one of the bots got banned, please try appeal, if that doesn't work then rip",
+                    description=f"one of the bots got banned, please try appeal, if that doesn't work then rip",
                     color=discord.Color.dark_red()
                                 )
                         if webhook_log == True:
@@ -215,7 +215,6 @@ sorry for this again''')
                         continue
                     #giveaway joiner
                     elif embed.title is not None and "maintainance" in embed.title.lower():
-                        self.not_in_use = True
                         embed6 = discord.Embed(
                     title=f'DANKMEMER UNDER MAINTAINANCE',
                     description=f"dankmemer under maintainance please confirm if the update is safe to continue with or not",
@@ -224,7 +223,7 @@ sorry for this again''')
                         if webhook_log == True:
                             self.webhook.send(embed=embed6, username='dankheist')
                         if stop_if_maintainance == True:
-                            continue
+                            self.not_in_use = True
                         if notifications != True:
                             continue
                         notification.notify(
@@ -283,8 +282,8 @@ if __name__ == "__main__":
 
 {Back.LIGHTCYAN_EX}Welcome!
 {Back.LIGHTMAGENTA_EX}Made by dimlight. on discord :>
-{Back.CYAN}join dicord https://discord.gg/j6V5JnvCR for any help,{Back.RESET}
-
+{Back.CYAN}join dicord https://discord.gg/j6V5JnvCR for any help,
+{Back.RESET}
 
 {Fore.GREEN}---------------------------------
 ''')
