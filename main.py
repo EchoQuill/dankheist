@@ -27,7 +27,7 @@ stop_if_maintainance = True
 
 #DON'T TOUCH THESE
 bot_busy = False
-ver = "1"
+ver = "1.2"
 ver_check_url = "https://raw.githubusercontent.com/1010saf/dankheist/main/version.txt"
 ver_check = requests.get(ver_check_url).text.strip()
 forcestop_url = "https://raw.githubusercontent.com/1010saf/dankheist/main/forcestop.txt"
@@ -51,7 +51,8 @@ Logged in as {self.user.name}!
         self.bot = 270904126974590976
         self.dm = self.get_user(self.bot)
         self.joined = 0
-        self.webhook = SyncWebhook.from_url(webhook_url)
+        if webhook_log == True:
+            self.webhook = SyncWebhook.from_url(webhook_url)
         self.not_in_use = False
         if webhook_log == True:
             self.webhook.send(embed=embed1, username='dankheist')
@@ -287,7 +288,8 @@ if __name__ == "__main__":
 
 {Fore.GREEN}---------------------------------
 ''')
-    webhook = SyncWebhook.from_url(webhook_url)
+    if webhook_log == True:
+        webhook = SyncWebhook.from_url(webhook_url)
     embed = discord.Embed(
     title='dankheist started',
     description=f'current ver "{ver}".',
