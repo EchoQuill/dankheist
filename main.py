@@ -17,8 +17,8 @@ import discord.errors
 #edit this if you want
 webhook_log = False #chance this to "True" if you want it to send webhook messages
 webhook_url = "" #webhook url here if you set webhook_log to true
-deposit = False  #whether you want it to withdraw or not
-withdraw = True #whether you want it to depost or not
+deposit = True  #whether you want it to withdraw or not
+withdraw = False #whether you want it to depost or not
 chance_of_join = 100 #don't change if you want it to join all heists, else change it to how much percent you want it to join heists(percent without "%" symbol, only numbers)
 notifications = True #chance this to "False" if you want it to not send messages regarding selfbot status
 giveaway = False # whether you want to join gaws or not
