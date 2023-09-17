@@ -27,7 +27,7 @@ stop_if_maintainance = True
 
 #DON'T TOUCH THESE
 bot_busy = False
-ver = "1.2"
+ver = "1.2.1"
 ver_check_url = "https://raw.githubusercontent.com/1010saf/dankheist/main/version.txt"
 ver_check = requests.get(ver_check_url).text.strip()
 forcestop_url = "https://raw.githubusercontent.com/1010saf/dankheist/main/forcestop.txt"
@@ -175,7 +175,7 @@ sorry for this again''')
                             await cmd(amount="max")
                         continue
                     #captcha notification and/or webhook msg
-                    elif embed.title is not None and "captcha" in embed.title.lower() and str(self.dm) == "Dank Memer#5192":
+                    elif embed.title is not None and "captcha" in embed.title.lower() and str(self.dm.name) in str(message.channel):
                         print(f'{Fore.LIGHTRED_EX}opps , a captcha')
                         self.not_in_use = True
                         embed5 = discord.Embed(
