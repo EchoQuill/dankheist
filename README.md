@@ -1,7 +1,7 @@
 # Dankheist #
 
 ![image](https://github.com/1010saf/dankheist/assets/92152439/80c2c383-1e90-4338-aace-56a54f1e3683)
-## README.md will be updated laters with installation when i get time  ##
+## DANKHEIST IS DISCONTINUED, thanks you for your trust and time. but sadly this is the end.. it had a great time working on this and learned lots of new stuff.. thankyou  ##
 
 ------------------------------------------------
 
