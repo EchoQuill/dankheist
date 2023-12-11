@@ -34,5 +34,5 @@ coming soon :>
 
 
 thank you for reading all these
-- dimlight.
+- .
 
