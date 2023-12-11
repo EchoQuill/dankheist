@@ -1,3 +1,6 @@
+# CODE NO LONGER MAINTENANED BY OWNER. USE AT YOUR OWN RISK
+
+
 from colorama import Fore, Back, init as colorama_init
 from plyer import notification
 import random
@@ -281,9 +284,7 @@ if __name__ == "__main__":
 (____/\_/\_/\_)__)(__\_)\_)(_/(____)(__)(____/ (__) {Fore.RESET}
 {Back.LIGHTGREEN_EX}{Fore.BLACK}                    || HEIST JOINER ||  
 
-{Back.LIGHTCYAN_EX}Welcome!
-{Back.LIGHTMAGENTA_EX}Made by dimlight. on discord :>
-{Back.CYAN}join dicord https://discord.gg/j6V5JnvCR for any help,
+{Back.LIGHTCYAN_EX}Welcome.
 {Back.RESET}
 
 {Fore.GREEN}---------------------------------
